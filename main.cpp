@@ -82,6 +82,7 @@ void learn(vector<double> expectedOutput)
 
 int main(int argc, char *argv[])
 {
+    // learning XOR operation
     vector<vector<double> > inputVector = {{0,0}, {0,1}, {1,0}, {1,1}};
     vector<vector<double> > outputVector = {{0}, {1}, {1}, {0}};
 
