@@ -41,7 +41,6 @@ private:
     int width;
 };
 
-// operators
 template <class T>
 Matrix<T> operator+(Matrix<T> const &a, Matrix<T> const &b);
 
@@ -56,7 +55,6 @@ std::ostream& operator<<(std::ostream &flux, Matrix<T> const &m);
 
 #endif
 
-// methods .CPP
 
 template <class T>
 Matrix<T>::Matrix(int height, int width)
@@ -274,8 +272,6 @@ void Matrix<T>::print(std::ostream &flux) const
         flux << std::endl;
     }
 }
-
-// overloading operator
 
 template <class T>
 bool Matrix<T>::operator==(Matrix const &m)
