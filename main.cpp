@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cmath>
-#include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 #include "Matrix.h"
 
 using namespace std;
@@ -82,6 +85,8 @@ void learn(vector<double> expectedOutput)
 
 int main(int argc, char *argv[])
 {
+    srand (time(NULL)); // to generate random weights
+
     // learning XOR operation
     vector<vector<double> > inputVector = {{0,0}, {0,1}, {1,0}, {1,1}};
     vector<vector<double> > outputVector = {{0}, {1}, {1}, {0}};
