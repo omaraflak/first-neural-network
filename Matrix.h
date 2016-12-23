@@ -2,6 +2,7 @@
 #define DEF_MATRIX
 
 #include <iostream>
+#include <sstream>
 #include <vector>
 
 template <class T>
@@ -263,11 +264,33 @@ Matrix<T> Matrix<T>::applyFunction(T (*function)(T)) const
 template <class T>
 void Matrix<T>::print(std::ostream &flux) const
 {
+    int maxLength[width] = {};
+    std::stringstream ss;
+
     for (int i=0 ; i<height ; i++)
     {
         for (int j=0 ; j<width ; j++)
         {
-            flux << array[i][j] << " ";
+            ss << this->array[i][j];
+            if(maxLength[j] < ss.str().size())
+            {
+                maxLength[j] = ss.str().size();
+            }
+            ss.str(std::string());
+        }
+    }
+
+    for (int i=0 ; i<height ; i++)
+    {
+        for (int j=0 ; j<width ; j++)
+        {
+            flux << array[i][j];
+            ss << array[i][j];
+            for (int k=0 ; k<maxLength[j]-ss.str().size()+3 ; k++)
+            {
+                flux << " ";
+            }
+            ss.str(std::string());
         }
         flux << std::endl;
     }
