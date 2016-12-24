@@ -38,9 +38,9 @@ double stepFunction(double x)
     return x;
 }
 
-void init(int inputNeuron, int hiddenNeuron, int outputNeuron)
+void init(int inputNeuron, int hiddenNeuron, int outputNeuron, double rate)
 {
-    learningRate = 0.7; // experimental value
+    learningRate = rate;
 
     W1 = Matrix<double>(inputNeuron, hiddenNeuron);
     W2 = Matrix<double>(hiddenNeuron, outputNeuron);
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
     vector<vector<double> > inputVector = {{0,0}, {0,1}, {1,0}, {1,1}};
     vector<vector<double> > outputVector = {{0}, {1}, {1}, {0}};
 
-    init(2, 3, 1); // 2 input neurons (i.e. 2 inputs), 3 output neurons (experimental), 1 output neuron (1 output)
+    init(2, 3, 1, 0.7); // 2 input neurons (i.e. 2 inputs), 3 output neurons (experimental), 1 output neuron (1 output), 0.7 learning rate (experimental)
 
     // train on 10000 iteration
     for (int i=0 ; i<10000 ; i++)
