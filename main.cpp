@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 
     init(2, 3, 1, 0.7); // 2 input neurons (i.e. 2 inputs), 3 hidden neurons (experimental), 1 output neuron (1 output), 0.7 learning rate (experimental)
 
-    // train on 10000 iteration
+    // train on 10000 iterations
     for (int i=0 ; i<10000 ; i++)
     {
         for (int j=0 ; j<inputVector.size() ; j++)
