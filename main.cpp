@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "Matrix.h"
+#include "../Matrix/Matrix.h"
 
 using namespace std;
 
