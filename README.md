@@ -10,8 +10,8 @@ A neural network implemented with **matrices** in C++, without any third party l
     g++ main.cpp Matrix.h -o main -std=c++11
     ./main
     
-# Plot version
-This version is exactly the same as the main.cpp one but it prints the weights variation in a file to plot them later.
+# Now you see me
+**withPlot.cpp** version is exactly the same as the **main.cpp** one but it prints the weights/error variations in files to plot them later.
 
 Compile and run:
 
