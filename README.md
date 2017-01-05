@@ -25,6 +25,8 @@ Once the program has finished, 4 files should be created in the current director
 
 You can plot the data with **[plotly](https://plot.ly/create/)** by pressing the **import** button (top right).
 
+**I had some trouble with Plotly on Google Chrome. Switching to another browser fixed my problem...**
+
 Here is some plot :
 
 ![alt tag](https://github.com/omaflak/Neural-Network/blob/master/images/weightsPlot.png?raw=true)
