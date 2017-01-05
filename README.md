@@ -20,6 +20,7 @@ Compile and run:
 Once the program has finished, 4 files should be created in the current directory: plotX, plotY, plotEX, plotEY
 
 plotX, plotY : xy coordinates for weights variation
+
 plotEX, plotEY : xy coordinates for error variation
 
 You can plot the data with **[plotly](https://plot.ly/create/)** by pressing the **import** button (top right).
