@@ -1,18 +1,17 @@
 # Neural Network in C++
 A neural network implemented with **matrices** in C++, without any third party library !
 
-# Download project
+# What's in there ?
+
++ **src/XOR :** Making the program learn XOR operation.
++ **src/Plot :** XOR version but prints the weights/error variations in files to plot them later (see images below).
++ **src/Digits-Recognition :** Learning to recognize hand-written digits with a training file.
+
+# Download, Compile & Run
     git clone https://github.com/omaflak/Neural-Network
     cd Neural-Network
     git clone https://github.com/omaflak/Matrix
 
-# What's in there ?
-
-+ **src/XOR :** Making the program learn xor operation.
-+ **src/Plot :** XOR version but prints the weights/error variations in files to plot them later (see images below).
-+ **src/Digits-Recognition :** Learning to recognize hand-written digits with a training file.
-
-# Compile & Run
     # cd into one of the directories above and:
     sh compile.sh
     ./main
