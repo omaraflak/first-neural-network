@@ -21,4 +21,4 @@ Once the program has finished, 4 files should be created in the current director
 plotX, plotY : x and y coordinates for weights variation
 plotEX, plotEY : x and y coordinates for error variation
 
-you can plot the data with **(plotly)[https://plot.ly/create/]** by pressing the **import** button (top right).
+you can plot the data with **[plotly](https://plot.ly/create/)** by pressing the **import** button (top right).
