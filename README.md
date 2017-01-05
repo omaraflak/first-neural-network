@@ -24,3 +24,5 @@ Once the program has finished, 4 files should be created in the current director
 + **plotEX/EY :** xy coordinates for error variation
 
 You can plot the data with **[plotly](https://plot.ly/create/)** by pressing the **import** button (top right).
+
+Here is some plot I did :
