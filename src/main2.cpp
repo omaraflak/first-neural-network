@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
             }
         }
         plotEX << i << endl;
-        plotEY << sum(Y2.subtract(Y).applyFunction(pow)) << endl;
+        plotEY << sum(Y2.subtract(Y).applyFunction(pow).multiply(0.5)) << endl; // plot error
     }
 
     plotEY.close();
