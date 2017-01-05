@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
                 for (int w=0 ; w<W1.getWidth() ; w++)
                 {
                     plotX << i << endl;
-                    plotY << W1.get(h,w) << endl;
+                    plotY << W1.get(h,w) << endl; // we are going to plot the W1 parameters
                 }
             }
         }
