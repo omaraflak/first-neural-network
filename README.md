@@ -35,3 +35,5 @@ Here is some plot :
 ![alt tag](https://github.com/omaflak/Neural-Network/blob/master/images/errorPlot.png?raw=true)
 
 We can see that the program is actually working: while the weights are converging to specific values, the error is decreasing.
+
+Amen !
