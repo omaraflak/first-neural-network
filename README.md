@@ -5,18 +5,21 @@ A neural network implemented with **matrices** in C++, without any third party l
     git clone https://github.com/omaflak/Neural-Network
     cd Neural-Network
     git clone https://github.com/omaflak/Matrix
-    
+
+# What's in there ?
+
++ **src/XOR :** Making the program learn xor operation.
++ **src/Plot :** XOR version but prints the weights/error variations in files to plot them later (see images below).
++ **src/Digits-Recognition :** Learning to recognize hand-written digits with a training file.
+
 # Compile & Run
-    g++ main.cpp Matrix.h -o main -std=c++11
+    # cd into one of the directories above and:
+    sh compile.sh
     ./main
-    
-# Now you see me
-**main2.cpp** version is exactly the same as the **main.cpp** one but it prints the weights/error variations in files to plot them later.
 
-Compile and run:
+# Plot
+**src/Plot** version is exactly the same as the **src/XOR** one but it prints the weights/error variations in files to plot them later.
 
-    g++ main2.cpp Matrix.h -o main -std=c++11 && ./main
-    
 Once the program has finished, 4 files should be created in the current directory: plotX, plotY, plotEX, plotEY
 
 + **plotX/Y :** xy coordinates for weights variation
@@ -32,4 +35,4 @@ Here is some plot :
 ![alt tag](https://github.com/omaflak/Neural-Network/blob/master/images/weightsPlot.png?raw=true)
 ![alt tag](https://github.com/omaflak/Neural-Network/blob/master/images/errorPlot.png?raw=true)
 
-We can see that the program is indeed working: while the weights are converging to specific values, the error is decreasing.
+We can see that the program is actually working: while the weights are converging to specific values, the error is decreasing.
