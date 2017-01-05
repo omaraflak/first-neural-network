@@ -11,11 +11,11 @@ A neural network implemented with **matrices** in C++, without any third party l
     ./main
     
 # Now you see me
-**withPlot.cpp** version is exactly the same as the **main.cpp** one but it prints the weights/error variations in files to plot them later.
+**main2.cpp** version is exactly the same as the **main.cpp** one but it prints the weights/error variations in files to plot them later.
 
 Compile and run:
 
-    g++ withPlot.cpp Matrix.h -o main -std=c++11 && ./main
+    g++ main2.cpp Matrix.h -o main -std=c++11 && ./main
     
 Once the program has finished, 4 files should be created in the current directory: plotX, plotY, plotEX, plotEY
 
