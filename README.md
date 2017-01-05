@@ -25,7 +25,7 @@ Once the program has finished, 4 files should be created in the current director
 
 You can plot the data with **[plotly](https://plot.ly/create/)** by pressing the **import** button (top right).
 
-**I had some trouble with Plotly on Google Chrome. Switching to another browser fixed my problem...**
+**I had some trouble with Plotly on Google Chrome. Switching to another browser fixed the problem...**
 
 Here is some plot :
 
