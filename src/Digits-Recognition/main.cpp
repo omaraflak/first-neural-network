@@ -1,10 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include <cmath>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-#include "Loader.h"
 #include "Matrix.h"
 
 using namespace std;
@@ -84,11 +81,42 @@ void learn(vector<double> expectedOutput)
     T2 = T2.subtract(E2.multiply(learningRate)); // (dEdT2 = E2)
 }
 
+void loadTraining(const char *filename, vector<vector<double> > &input, vector<vector<double> > &output)
+{
+    int trainingSize = 946;
+    input.resize(trainingSize);
+    output.resize(trainingSize);
+
+    ifstream file(filename);
+    if(file)
+    {
+        string line;
+        int n;
+
+        for (int i=0 ; i<trainingSize ; i++) // load 946 examples
+        {
+            for (int h=0 ; h<32 ; h++) // 'images' are 32*32 pixels
+            {
+                getline(file, line);
+                for (int w=0 ; w<32 ; w++)
+                {
+                    input[i].push_back(atoi(line.substr(w,1).c_str()));
+                }
+            }
+            getline(file, line);
+            output[i].resize(10); // output is a vector of size 10
+            n = atoi(line.substr(0,1).c_str());
+            output[i][n] = 1;
+        }
+    }
+    file.close();
+}
+
 int main(int argc, char *argv[])
 {
     srand (time(NULL)); // to generate random weights
 
-    // learning digit recognition
+    // learning digit recognition (0,1,2,3,4,5,6,7,8,9)
     std::vector<std::vector<double> > inputVector, outputVector;
     loadTraining("training", inputVector, outputVector); // load data from file called "training"
 
