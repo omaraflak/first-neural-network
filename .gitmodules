@@ -1,3 +1,3 @@
 [submodule "Matrix"]
-	path = Matrix
+	path = src/Matrix
 	url = https://github.com/omaflak/Matrix
