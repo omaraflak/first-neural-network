@@ -1,3 +1,3 @@
 #! bin/sh
 
-g++ main.cpp Matrix.h -o main -std=c++11
+g++ main.cpp ../Network/Network.h ../Network/Network.cpp -o main -std=c++11
