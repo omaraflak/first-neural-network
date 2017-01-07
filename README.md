@@ -9,7 +9,7 @@ A neural network implemented with **matrices** in C++, without any third party l
 
 # Download, Compile & Run
     git clone https://github.com/omaflak/Neural-Network
-    cd Neural-Network
+    cd Neural-Network/src
     git clone https://github.com/omaflak/Matrix
 
     # cd into one of the directories above and:
