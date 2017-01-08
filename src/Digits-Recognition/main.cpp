@@ -74,13 +74,13 @@ int main(int argc, char *argv[])
     cout << endl << "expected output : actual output" << endl;
     for (int i=inputVector.size()-10 ; i<inputVector.size() ; i++) // testing on last 10 examples
     {
-        // as the sigmoid function never reaches 0.0 nor 1.0
-        // it can be a good idea to consider values greater than 0.9 as 1.0 and values smaller than 0.1 as 0.0
-        // hence the step function.
         for (int j=0 ; j<10 ; j++)
         {
             cout << outputVector[i][j] << " ";
         }
         cout << ": " << net.computeOutput(inputVector[i]).applyFunction(stepFunction) << endl;
+        // as the sigmoid function never reaches 0.0 nor 1.0
+        // it can be a good idea to consider values greater than 0.9 as 1.0 and values smaller than 0.1 as 0.0
+        // hence the step function.
     }
 }

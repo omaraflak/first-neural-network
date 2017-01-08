@@ -54,7 +54,6 @@ double sum(Matrix<double> M)
     return s;
 }
 
-
 void init(int inputNeuron, int hiddenNeuron, int outputNeuron, double rate)
 {
     learningRate = rate;

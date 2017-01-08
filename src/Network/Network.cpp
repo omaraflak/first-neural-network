@@ -3,7 +3,7 @@
 Network::Network(int inputNeuron, int hiddenNeuron, int outputNeuron, double learningRate)
 {
     srand (time(NULL));
-    
+
     this->learningRate = learningRate;
 
     W1 = Matrix<double>(inputNeuron, hiddenNeuron);
