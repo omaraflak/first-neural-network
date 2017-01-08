@@ -1,4 +1,7 @@
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
+
 #include "../Network/Network.h"
 
 using namespace std;

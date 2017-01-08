@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <cmath>
+#include <time.h>
+#include <stdlib.h>
+
 #include "../Matrix/Matrix.h"
 
 class Network

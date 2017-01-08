@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <time.h>
+#include <stdlib.h>
 
 #include "../Matrix/Matrix.h"
 
