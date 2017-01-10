@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
 
     // train on 30 iterations
     // could be more but to my surprise it is very slow... I did the same program in Java and it was a lot faster, so I probably messed up somewhere...
+    cout << "Training..." << endl;
     for (int i=0 ; i<30 ; i++)
     {
         for (int j=0 ; j<inputVector.size()-10 ; j++) // skip the 10 last examples to test the program at the end
@@ -70,11 +71,12 @@ int main(int argc, char *argv[])
             net.computeOutput(inputVector[j]);
             net.learn(outputVector[j]);
         }
-        cout << "#" << i << endl;
+        cout << "#" << i+1 << "/30" << endl;
     }
 
     // test
-    cout << endl << "expected output : actual output" << endl;
+    cout << endl << "Testing..." << endl;
+    cout << "expected output : actual output" << endl << endl;
     for (int i=inputVector.size()-10 ; i<inputVector.size() ; i++) // testing on last 10 examples
     {
         for (int j=0 ; j<10 ; j++)
