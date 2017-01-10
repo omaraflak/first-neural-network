@@ -17,6 +17,11 @@ Network::Network(int inputNeuron, int hiddenNeuron, int outputNeuron, double lea
     T2 = T2.applyFunction(random);
 }
 
+Network::Network(const char *filepath)
+{
+    loadNetworkParams(filepath);
+}
+
 Matrix<double> Network::computeOutput(std::vector<double> input)
 {
     std::vector<std::vector<double> > in = {input}; // row matrix
@@ -46,6 +51,68 @@ void Network::learn(std::vector<double> expectedOutput)
     T1 = T1.subtract(E1.multiply(learningRate)); // (dEdT1 = E1)
     T2 = T2.subtract(E2.multiply(learningRate)); // (dEdT2 = E2)
 }
+
+void Network::saveNetworkParams(const char *filepath)
+{
+    std::ofstream out(filepath);
+    Matrix<double> params[] = {W1,W2,T1,T2};
+    int h,w;
+
+    out << learningRate << std::endl;
+    for (Matrix<double> m : params){
+        h = m.getHeight();
+        w = m.getWidth();
+
+        out << h << std::endl;
+        out << w << std::endl;
+        for (int i=0 ; i<h ; i++)
+        {
+            for (int j=0 ; j<w ; j++)
+            {
+                out << m.get(i,j) << (j!=w-1?" ":"");
+            }
+            out << std::endl;
+        }
+    }
+    out.close();
+}
+
+void Network::loadNetworkParams(const char *filepath)
+{
+    std::ifstream in(filepath);
+    std::vector<Matrix<double> > params(4);
+    double val;
+    int h,w;
+
+    if(in)
+    {
+        in >> learningRate;
+        for(int i=0 ; i<params.size() ; i++)
+        {
+            in >> h;
+            in >> w;
+            Matrix<double> m(h,w);
+            for (int hh=0 ; hh<h ; hh++)
+            {
+                for (int ww=0 ; ww<w ; ww++)
+                {
+                    in >> val;
+                    m.put(hh,ww,val);
+                }
+            }
+
+            params[i] = m;
+        }
+    }
+    in.close();
+
+    // assign values
+    W1 = params[0];
+    W2 = params[1];
+    T1 = params[2];
+    T2 = params[3];
+}
+
 
 double Network::random(double x)
 {

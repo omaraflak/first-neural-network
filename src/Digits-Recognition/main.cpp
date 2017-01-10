@@ -88,4 +88,7 @@ int main(int argc, char *argv[])
         // it can be a good idea to consider values greater than 0.9 as 1.0 and values smaller than 0.1 as 0.0
         // hence the step function.
     }
+
+    // net.saveNetworkParams("params");
+    // net.loadNetworkParams("params"); or Network net("params");
 }

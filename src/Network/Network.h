@@ -2,6 +2,7 @@
 #define DEF_NETWORK
 
 #include <vector>
+#include <fstream>
 #include <cmath>
 #include <time.h>
 #include <stdlib.h>
@@ -12,8 +13,12 @@ class Network
 {
 public:
     Network(int inputNeuron, int hiddenNeuron, int outputNeuron, double learningRate);
+    Network(const char *filepath);
     Matrix<double> computeOutput(std::vector<double> input);
     void learn(std::vector<double> expectedOutput);
+
+    void saveNetworkParams(const char *filepath);
+    void loadNetworkParams(const char *filepath);
 
 private:
     Matrix<double> X;
