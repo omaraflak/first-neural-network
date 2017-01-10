@@ -18,6 +18,7 @@ A neural network implemented with **matrices** in C++, without any third party l
 
 # Network Class
 The Network class contains all the algorithm (gradient descent, backpropagation...)
+
 Both **src/XOR** and **src/Digit-Recognition** are using it. It contains really 4 methods:
 
 + Matrix<double> computeOutput(std::vector<double> input); // make prediction
