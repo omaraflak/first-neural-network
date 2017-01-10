@@ -21,10 +21,10 @@ The Network class contains all the algorithm (gradient descent, backpropagation.
 
 Both **src/XOR** and **src/Digit-Recognition** are using it. It contains really 4 methods:
 
-+ Matrix<double> computeOutput(std::vector<double> input); // make prediction
-+ void learn(std::vector<double> expectedOutput); // learn from the previous computeOutput()
-+ void saveNetworkParams(const char *filepath); // save all networks parameters into a file (after a training)
-+ void loadNetworkParams(const char *filepath); // or Network net("params") : load networks parameters from a file so you don't have to train it again
++ `Matrix<double> computeOutput(std::vector<double> input); // make prediction`
++ `void learn(std::vector<double> expectedOutput); // learn from the previous computeOutput()`
++ `void saveNetworkParams(const char *filepath); // save all networks parameters into a file (after a training)`
++ `void loadNetworkParams(const char *filepath); // or Network net("params") : load networks parameters from a file so you don't have to train it again`
 
 
 # Plot
