@@ -35,7 +35,10 @@ Both **src/XOR** and **src/Digit-Recognition** are using it. It contains only 4 
 
 
 # Plot
-**src/Plot** version is exactly the same as the **src/XOR** one but it prints the weights/error variations in files to plot them later.
+
+This version is not using the Network class, it is a one file program and it was only to plot the network's parameters on a graph.
+
+The program is learning XOR operation and is saving some weights and the error over time in files so we can plot them later.
 
 Once the program has finished, 4 files should be created in the current directory: plotX, plotY, plotEX, plotEY
 
