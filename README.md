@@ -30,8 +30,10 @@ Both **src/XOR** and **src/Digit-Recognition** are using it. It contains only 4 
     // save all networks parameters into a file (after a training)
     void saveNetworkParams(const char *filepath);
 
-    // or Network net("params") : load networks parameters from a file so you don't have to train it again
+    // load networks parameters from a file so you don't have to train it again || you can also use the constructor
     void loadNetworkParams(const char *filepath);
+    Network net("params");
+
 
 
 # Plot
