@@ -19,7 +19,7 @@ A neural network implemented with **matrices** in C++, without any third party l
 # Network Class
 The Network class contains the gradient descent algorithm.
 
-Both **src/XOR** and **src/Digit-Recognition** are using it. Here is the header file:
+Both **src/XOR** and **src/Digit-Recognition** are using it. Quick description :
 
     // constructor
     Network(int inputNeuron, int hiddenNeuron, int outputNeuron, double learningRate);
