@@ -62,7 +62,6 @@ int main(int argc, char *argv[])
     Network net(1024, 15, 10, 0.7);
 
     // train on 30 iterations
-    // could be more but to my surprise it is very slow... I did the same program in Java and it was a lot faster, so I probably messed up somewhere...
     cout << "Training..." << endl;
     for (int i=0 ; i<30 ; i++)
     {
@@ -89,6 +88,9 @@ int main(int argc, char *argv[])
         // hence the step function.
     }
 
-    // net.saveNetworkParams("params");
+    cout << endl << "Saving parameters...";
+    net.saveNetworkParams("params");
+    cout << "ok!" << endl;
+
     // net.loadNetworkParams("params"); or Network net("params");
 }
