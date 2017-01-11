@@ -19,12 +19,19 @@ A neural network implemented with **matrices** in C++, without any third party l
 # Network Class
 The Network class contains all the algorithm (gradient descent, backpropagation...)
 
-Both **src/XOR** and **src/Digit-Recognition** are using it. It contains really 4 methods:
+Both **src/XOR** and **src/Digit-Recognition** are using it. It contains 4 methods:
 
-+ `Matrix<double> computeOutput(std::vector<double> input); // make prediction`
-+ `void learn(std::vector<double> expectedOutput); // learn from the previous computeOutput()`
-+ `void saveNetworkParams(const char *filepath); // save all networks parameters into a file (after a training)`
-+ `void loadNetworkParams(const char *filepath); // or Network net("params") : load networks parameters from a file so you don't have to train it again`
+    // make prediction
+    Matrix<double> computeOutput(std::vector<double> input);
+
+    // learn from the previous computeOutput()
+    void learn(std::vector<double> expectedOutput);
+
+    // save all networks parameters into a file (after a training)
+    void saveNetworkParams(const char *filepath);
+    
+    // or Network net("params") : load networks parameters from a file so you don't have to train it again
+    void loadNetworkParams(const char *filepath);
 
 
 # Plot
