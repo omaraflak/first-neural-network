@@ -3,7 +3,7 @@ A neural network implemented with **matrices** in C++, without any third party l
 
 # What's in there ?
 
-+ **src/XOR :** Making the program learn XOR operation.
++ **src/XOR :** Learning XOR operation.
 + **src/Plot :** XOR version but prints the weights/error variations in files to plot them later (see images below).
 + **src/Digits-Recognition :** Learning to recognize hand-written digits with a training file.
 
