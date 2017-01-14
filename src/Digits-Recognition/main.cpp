@@ -51,7 +51,7 @@ void loadTraining(const char *filename, vector<vector<double> > &input, vector<v
 
 int main(int argc, char *argv[])
 {
-    // learning digit recognition (0,1,2,3,4,5,6,7,8,9)
+    // learning digit recognition
     std::vector<std::vector<double> > inputVector, outputVector;
     loadTraining("training", inputVector, outputVector); // load data from file called "training"
 
