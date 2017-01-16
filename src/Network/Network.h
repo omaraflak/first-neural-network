@@ -12,8 +12,9 @@
 class Network
 {
 public:
-    Network(int inputNeuron, int hiddenNeuron, int outputNeuron, double learningRate);
+    Network(std::vector<int> neurons, double learningRate);
     Network(const char *filepath);
+
     Matrix<double> computeOutput(std::vector<double> input);
     void learn(std::vector<double> expectedOutput);
 
@@ -21,24 +22,22 @@ public:
     void loadNetworkParams(const char *filepath);
 
 private:
-    Matrix<double> X;
-    Matrix<double> W1;
-    Matrix<double> H;
-    Matrix<double> W2;
-    Matrix<double> Y;
-    Matrix<double> Y2;
-    Matrix<double> E1;
-    Matrix<double> E2;
-    Matrix<double> dEdW1;
-    Matrix<double> dEdW2;
-    Matrix<double> T1;
-    Matrix<double> T2;
+    std::vector<Matrix<double> > H;
+    std::vector<Matrix<double> > W;
+    std::vector<Matrix<double> > B;
+    std::vector<Matrix<double> > dEdW;
+    std::vector<Matrix<double> > dEdB;
 
+    Matrix<double> Y2;
+
+    int hiddenLayersCount;
     double learningRate;
 
     static double random(double x);
     static double sigmoid(double x);
     static double sigmoidePrime(double x);
+
+    void printToFile(Matrix<double> &m, std::ofstream &file);
 };
 
 #endif

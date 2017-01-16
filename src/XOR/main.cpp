@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
     vector<vector<double> > inputVector = {{0,0}, {0,1}, {1,0}, {1,1}};
     vector<vector<double> > outputVector = {{0}, {1}, {1}, {0}};
 
-    Network net(2, 3, 1, 0.7);
+    Network net({2, 3, 1}, 0.7);
     // 2 input neurons (i.e. 2 inputs)
-    // 3 hidden neurons (experimental)
+    // 3 hidden neurons (experimental) : you can specify as many hidden layers as you want (you need to add the number of neurons in each)
     // 1 output neuron (1 output)
     // 0.7 learning rate (experimental)
 

@@ -1,20 +1,26 @@
 #include "Network.h"
 
-Network::Network(int inputNeuron, int hiddenNeuron, int outputNeuron, double learningRate)
+Network::Network(std::vector<int> neurons, double learningRate)
 {
     srand (time(NULL));
 
     this->learningRate = learningRate;
+    this->hiddenLayersCount = neurons.size()-2;
 
-    W1 = Matrix<double>(inputNeuron, hiddenNeuron);
-    W2 = Matrix<double>(hiddenNeuron, outputNeuron);
-    T1 = Matrix<double>(1, hiddenNeuron);
-    T2 = Matrix<double>(1, outputNeuron);
+    H = std::vector<Matrix<double> >(hiddenLayersCount+2);
+    W = std::vector<Matrix<double> >(hiddenLayersCount+1);
+    B = std::vector<Matrix<double> >(hiddenLayersCount+1);
+    dEdW = std::vector<Matrix<double> >(hiddenLayersCount+1);
+    dEdB = std::vector<Matrix<double> >(hiddenLayersCount+1);
 
-    W1 = W1.applyFunction(random);
-    W2 = W2.applyFunction(random);
-    T1 = T1.applyFunction(random);
-    T2 = T2.applyFunction(random);
+    for (int i=0 ; i<neurons.size()-1 ; i++)
+    {
+        W[i] = Matrix<double>(neurons[i], neurons[i+1]);
+        B[i] = Matrix<double>(1, neurons[i+1]);
+
+        W[i] = W[i].applyFunction(random);
+        B[i] = B[i].applyFunction(random);
+    }
 }
 
 Network::Network(const char *filepath)
@@ -25,10 +31,14 @@ Network::Network(const char *filepath)
 Matrix<double> Network::computeOutput(std::vector<double> input)
 {
     std::vector<std::vector<double> > in = {input}; // row matrix
-    X = Matrix<double>(in);
-    H = X.dot(W1).add(T1).applyFunction(sigmoid);
-    Y = H.dot(W2).add(T2).applyFunction(sigmoid);
-    return Y;
+    H[0] = Matrix<double>(in);
+
+    for (int i=1 ; i<hiddenLayersCount+2 ; i++)
+    {
+        H[i] = H[i-1].dot(W[i-1]).add(B[i-1]).applyFunction(sigmoid);
+    }
+
+    return H[hiddenLayersCount+1];
 }
 
 void Network::learn(std::vector<double> expectedOutput)
@@ -37,57 +47,82 @@ void Network::learn(std::vector<double> expectedOutput)
     Y2 = Matrix<double>(out);
 
     // Error E = 1/2 (expectedOutput - computedOutput)^2
-    // Then, we need to calculate the partial derivative of E with respect to W1,W2,T1,T2
+    // Then, we need to calculate the partial derivative of E with respect to W and B
 
     // compute gradients
-    E2 = Y.subtract(Y2).multiply(H.dot(W2).add(T2).applyFunction(sigmoidePrime));
-    E1 = E2.dot(W2.transpose()).multiply(X.dot(W1).add(T1).applyFunction(sigmoidePrime));
-    dEdW2 = H.transpose().dot(E2);
-    dEdW1 = X.transpose().dot(E1);
+    dEdB[hiddenLayersCount] = H[hiddenLayersCount+1].subtract(Y2).multiply(H[hiddenLayersCount].dot(W[hiddenLayersCount]).add(B[hiddenLayersCount]).applyFunction(sigmoidePrime));
+    for (int i=hiddenLayersCount-1 ; i>=0 ; i--)
+    {
+        dEdB[i] = dEdB[i+1].dot(W[i+1].transpose()).multiply(H[i].dot(W[i]).add(B[i]).applyFunction(sigmoidePrime));
+    }
+
+    for (int i=0 ; i<hiddenLayersCount+1 ; i++)
+    {
+        dEdW[i] = H[i].transpose().dot(dEdB[i]);
+    }
 
     // update weights
-    W1 = W1.subtract(dEdW1.multiply(learningRate));
-    W2 = W2.subtract(dEdW2.multiply(learningRate));
-    T1 = T1.subtract(E1.multiply(learningRate)); // (dEdT1 = E1)
-    T2 = T2.subtract(E2.multiply(learningRate)); // (dEdT2 = E2)
+    for (int i=0 ; i<hiddenLayersCount+1 ; i++)
+    {
+        W[i] = W[i].subtract(dEdW[i].multiply(learningRate));
+        B[i] = B[i].subtract(dEdB[i].multiply(learningRate));
+    }
+}
+
+void Network::printToFile(Matrix<double> &m, std::ofstream &file)
+{
+    int h = m.getHeight();
+    int w = m.getWidth();
+
+    file << h << std::endl;
+    file << w << std::endl;
+    for (int i=0 ; i<h ; i++)
+    {
+        for (int j=0 ; j<w ; j++)
+        {
+            file << m.get(i,j) << (j!=w-1?" ":"");
+        }
+        file << std::endl;
+    }
 }
 
 void Network::saveNetworkParams(const char *filepath)
 {
     std::ofstream out(filepath);
-    Matrix<double> params[] = {W1,W2,T1,T2};
-    int h,w;
 
+    out << hiddenLayersCount << std::endl;
     out << learningRate << std::endl;
-    for (Matrix<double> m : params){
-        h = m.getHeight();
-        w = m.getWidth();
 
-        out << h << std::endl;
-        out << w << std::endl;
-        for (int i=0 ; i<h ; i++)
-        {
-            for (int j=0 ; j<w ; j++)
-            {
-                out << m.get(i,j) << (j!=w-1?" ":"");
-            }
-            out << std::endl;
-        }
+    for (Matrix<double> m : W){
+        printToFile(m, out);
     }
+
+    for (Matrix<double> m : B){
+        printToFile(m, out);
+    }
+
     out.close();
 }
 
 void Network::loadNetworkParams(const char *filepath)
 {
     std::ifstream in(filepath);
-    std::vector<Matrix<double> > params(4);
+    std::vector<Matrix<double> > params;
     double val;
     int h,w;
 
     if(in)
     {
+        in >> hiddenLayersCount;
         in >> learningRate;
-        for(int i=0 ; i<params.size() ; i++)
+
+        H = std::vector<Matrix<double> >(hiddenLayersCount+2);
+        W = std::vector<Matrix<double> >(hiddenLayersCount+1);
+        B = std::vector<Matrix<double> >(hiddenLayersCount+1);
+        dEdW = std::vector<Matrix<double> >(hiddenLayersCount+1);
+        dEdB = std::vector<Matrix<double> >(hiddenLayersCount+1);
+
+        for(int i=0 ; i<2*hiddenLayersCount+2 ; i++)
         {
             in >> h;
             in >> w;
@@ -101,18 +136,22 @@ void Network::loadNetworkParams(const char *filepath)
                 }
             }
 
-            params[i] = m;
+            params.push_back(m);
         }
     }
     in.close();
 
     // assign values
-    W1 = params[0];
-    W2 = params[1];
-    T1 = params[2];
-    T2 = params[3];
-}
+    for (int i=0 ; i<hiddenLayersCount+1 ; i++)
+    {
+        W[i] = params[i];
+    }
 
+    for (int i=hiddenLayersCount+1 ; i<params.size() ; i++)
+    {
+        B[i-hiddenLayersCount-1] = params[i];
+    }
+}
 
 double Network::random(double x)
 {

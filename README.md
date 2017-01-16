@@ -4,7 +4,6 @@ A neural network implemented with **matrices** in C++, from scratch !
 # What's in there ?
 
 + **src/XOR :** Learning XOR operation.
-+ **src/Plot :** XOR version but prints the weights/error variations in files to plot them later (see images below).
 + **src/Digits-Recognition :** Learning to recognize hand-written digits with a training file.
 
 # Download, Compile & Run
@@ -22,7 +21,12 @@ The Network class contains the gradient descent algorithm.
 Both **src/XOR** and **src/Digit-Recognition** are using it. Quick description :
 
     // constructor
-    Network(int inputNeuron, int hiddenNeuron, int outputNeuron, double learningRate);
+    // vector 'neurons' should be contain:
+    // - number of input neurons at first index
+    // - number of output neurons at last index
+    // - number(s) of hidden layer(s) in between
+    // example: {2,5,3,1} = 2 input neurons, 1 output neuron, 2 hidden layers (5 neurons and 3 neurons respectively)
+    Network(std::vector<int> neurons, double learningRate);
 
     // make prediction
     Matrix<double> computeOutput(std::vector<double> input);
@@ -42,21 +46,13 @@ Both **src/XOR** and **src/Digit-Recognition** are using it. Quick description :
 
 # Plot
 
-This version is not using the Network class, it is a one file program and it was only to plot the network's parameters on a graph.
+I was curious to see what would've happened if I had plotted the network's parameters on a graph, so I did it, and the result is actually fun :)
 
-The program is learning XOR operation and is saving some weights and the error over time in files so we can plot them later.
+The program was learning XOR operation and saving it's weights and error variation over time.
 
-Once the program has finished, 4 files should be created in the current directory: plotX, plotY, plotEX, plotEY
+Then I plotted the data with **[plotly](https://plot.ly/create/)**
 
-+ **plotX/Y :** xy coordinates for weights variation
-
-+ **plotEX/EY :** xy coordinates for error variation
-
-You can plot the data with **[plotly](https://plot.ly/create/)** by pressing the **import** button (top right).
-
-**I had some trouble with Plotly on Google Chrome. Switching to another browser fixed the problem...**
-
-Here is some plot :
+And here is the result :
 
 ![alt tag](https://github.com/omaflak/Neural-Network/blob/master/images/weightsPlot.png?raw=true)
 ![alt tag](https://github.com/omaflak/Neural-Network/blob/master/images/errorPlot.png?raw=true)

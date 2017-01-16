@@ -56,10 +56,10 @@ int main(int argc, char *argv[])
     loadTraining("training", inputVector, outputVector); // load data from file called "training"
 
     // 32*32=1024 input neurons (images are 32*32 pixels)
-    // 15 hidden neurons (experimental)
+    // 15 hidden neurons (experimental) : you can specify as many hidden layers as you want (you need to add the number of neurons in each)
     // 10 output neurons (for each image output is a vector of size 10, full of zeros and a 1 at the index of the number represented)
     // 0.7 learning rate (experimental)
-    Network net(1024, 15, 10, 0.7);
+    Network net({1024, 15, 10}, 0.7);
 
     // train on 30 iterations
     cout << "Training..." << endl;
