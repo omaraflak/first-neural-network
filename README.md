@@ -1,5 +1,6 @@
 # Neural Network in C++
 A neural network implemented with **matrices** in C++, from scratch !
+
 This program is meant to be used for supervised learning.
 
 # What's in there ?
