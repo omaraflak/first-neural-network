@@ -30,8 +30,7 @@ Network::Network(const char *filepath)
 
 Matrix<double> Network::computeOutput(std::vector<double> input)
 {
-    std::vector<std::vector<double> > in = {input}; // row matrix
-    H[0] = Matrix<double>(in);
+    H[0] = Matrix<double>({input}); // row matrix
 
     for (int i=1 ; i<hiddenLayersCount+2 ; i++)
     {
@@ -43,14 +42,13 @@ Matrix<double> Network::computeOutput(std::vector<double> input)
 
 void Network::learn(std::vector<double> expectedOutput)
 {
-    std::vector<std::vector<double> > out = {expectedOutput}; // row matrix
-    Y2 = Matrix<double>(out);
+    Y = Matrix<double>({expectedOutput}); // row matrix
 
     // Error E = 1/2 (expectedOutput - computedOutput)^2
     // Then, we need to calculate the partial derivative of E with respect to W and B
 
     // compute gradients
-    dEdB[hiddenLayersCount] = H[hiddenLayersCount+1].subtract(Y2).multiply(H[hiddenLayersCount].dot(W[hiddenLayersCount]).add(B[hiddenLayersCount]).applyFunction(sigmoidePrime));
+    dEdB[hiddenLayersCount] = H[hiddenLayersCount+1].subtract(Y).multiply(H[hiddenLayersCount].dot(W[hiddenLayersCount]).add(B[hiddenLayersCount]).applyFunction(sigmoidePrime));
     for (int i=hiddenLayersCount-1 ; i>=0 ; i--)
     {
         dEdB[i] = dEdB[i+1].dot(W[i+1].transpose()).multiply(H[i].dot(W[i]).add(B[i]).applyFunction(sigmoidePrime));

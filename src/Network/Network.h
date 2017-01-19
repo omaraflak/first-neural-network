@@ -28,7 +28,7 @@ private:
     std::vector<Matrix<double> > dEdW;
     std::vector<Matrix<double> > dEdB;
 
-    Matrix<double> Y2;
+    Matrix<double> Y;
 
     int hiddenLayersCount;
     double learningRate;
