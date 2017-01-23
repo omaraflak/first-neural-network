@@ -23,11 +23,12 @@ The Network class contains the gradient descent algorithm.
 Both **src/XOR** and **src/Digit-Recognition** are using it. Quick description :
 
     // constructor
-    // vector 'neurons' should be contain:
+    // vector 'neurons' should contain:
     // - number of input neurons at first index
     // - number of output neurons at last index
-    // - number(s) of hidden layer(s) in between
+    // - number of hidden neurons in between
     // example: {2,5,3,1} = 2 input neurons, 1 output neuron, 2 hidden layers (5 neurons and 3 neurons respectively)
+    // learning rate : experimental
     Network(std::vector<int> neurons, double learningRate);
 
     // make prediction
