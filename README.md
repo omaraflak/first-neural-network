@@ -56,7 +56,7 @@ The program was learning XOR operation and saving it's weights and error variati
 
 Then I plotted the data using **[plotly](https://plot.ly/create/)**
 
-**EDIT: ** I updated the repo and now there is a python script called **plotXY.py** at **src/** that will do the job instead. Try to compile and run **src/XOR_PLOT**.
+**EDIT:** I updated the repo and now there is a python script called **plotXY.py** at **src/** that will do the job instead. Try to compile and run **src/XOR_PLOT**.
 
 And here is the result :
 
