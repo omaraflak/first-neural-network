@@ -6,6 +6,7 @@ This program is meant to be used for supervised learning.
 # What's in there ?
 
 + **src/XOR :** Learning XOR operation.
++ **src/XOR_PLOT :** Learning XOR operation and plot weights variation on a graph (using python).
 + **src/Digits-Recognition :** Learning to recognize hand-written digits with a training file.
 
 # Download, Compile & Run
@@ -53,7 +54,9 @@ I was curious to see what would've happened if I had plotted the network's param
 
 The program was learning XOR operation and saving it's weights and error variation over time.
 
-Then I plotted the data with **[plotly](https://plot.ly/create/)**
+Then I plotted the data using **[plotly](https://plot.ly/create/)**
+
+**EDIT: ** I updated the repo and now there is a python script called **plotXY.py** at **src/** that will do the job instead. Try to compile and run **src/XOR_PLOT**.
 
 And here is the result :
 

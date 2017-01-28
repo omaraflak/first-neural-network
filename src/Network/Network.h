@@ -21,10 +21,11 @@ public:
     void saveNetworkParams(const char *filepath);
     void loadNetworkParams(const char *filepath);
 
-private:
-    std::vector<Matrix<double> > H;
     std::vector<Matrix<double> > W;
     std::vector<Matrix<double> > B;
+    
+private:
+    std::vector<Matrix<double> > H;
     std::vector<Matrix<double> > dEdW;
     std::vector<Matrix<double> > dEdB;
 
