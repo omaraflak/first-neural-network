@@ -12,7 +12,7 @@ This program is meant to be used for supervised learning.
 # Download, Compile & Run
     git clone https://github.com/omaflak/Neural-Network
     cd Neural-Network/src
-    git clone https://github.com/omaflak/Matrix
+    git submodule update --init
 
     # cd into one of the directories above and:
     sh compile.sh
