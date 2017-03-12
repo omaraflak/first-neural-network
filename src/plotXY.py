@@ -2,7 +2,7 @@ import sys
 import matplotlib.pyplot as plt
 
 if not len(sys.argv)==3:
-    print "Need 2 arguments: xFile, yFile"
+    print("Need 2 arguments: xFile, yFile")
     sys.exit()
 
 with open(sys.argv[1], 'r') as xFile:
